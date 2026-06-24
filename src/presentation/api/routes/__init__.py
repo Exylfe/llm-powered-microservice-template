@@ -13,6 +13,7 @@ Usage:
     from presentation.api.routes import llm_router
 
     app = FastAPI()
+    app.include_router(phone_router, prefix="/api/phone", tags=["Phone"])
     app.include_router(llm_router, prefix="/api/llm", tags=["LLM"])
 """
 
