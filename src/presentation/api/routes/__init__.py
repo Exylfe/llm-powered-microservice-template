@@ -16,6 +16,7 @@ Usage:
     app.include_router(llm_router, prefix="/api/llm", tags=["LLM"])
 """
 
+from .phone_routes import router as phone_router
 from .llm_routes import router as llm_router
 
 __all__ = ["llm_router"]
