@@ -22,6 +22,11 @@ class LLMOrchestrator:
         _format_prompt: Retrieve and format a prompt for a given request.
     """
 
+    def __init__(self, model_factory, prompt_repo):
+    self.model_factory = model_factory
+    self.prompt_repo = prompt_repo
+    self.tools = ToolRegistry()
+
     def __init__(self, model_factory: ModelFactory, prompt_repo: PromptRepository):
         self.model_factory = model_factory
         self.prompt_repo = prompt_repo
