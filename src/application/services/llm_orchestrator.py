@@ -72,6 +72,30 @@ class LLMOrchestrator:
             temperature=llm_request.temperature
         )
         
+import json
+
+try:
+    data = json.loads(generated_text)
+
+    if "tool" in data:
+        result = self.tools.execute(data["tool"], data.get("params", {}))
+
+        return LLMResponse(
+            id="tool-response",
+            object="tool_execution",
+            created=int(time.time()),
+            model=model.model_name,
+            choices=[{
+                "text": f"Executed {data['tool']}: {result}",
+                "index": 0,
+                "logprobs": None,
+                "finish_reason": "tool"
+            }],
+            usage={}
+        )
+except:
+    pass
+
         return LLMResponse(
             id=f"response-{hash(generated_text)}",
             object="text_completion",
