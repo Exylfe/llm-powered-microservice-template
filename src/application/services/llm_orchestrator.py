@@ -3,6 +3,7 @@ from application.models import ModelFactory
 from application.prompt_management import PromptRepository
 from application.domain.llm_request import LLMRequest
 from application.domain.llm_response import LLMResponse
+from application.services.tool_registry import ToolRegistry
 
 class LLMOrchestrator:
     """
